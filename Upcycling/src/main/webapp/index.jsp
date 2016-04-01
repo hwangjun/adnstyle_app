@@ -75,7 +75,7 @@
 		}
 		function join(){
 			var data = {
-				    userId: "mi2h355ee",
+				    userId: "abcqwe",
 				    password: "1111"
 				};
 			$.ajax({

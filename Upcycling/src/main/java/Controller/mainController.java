@@ -65,6 +65,8 @@ public class mainController extends HttpServlet implements Servlet {
 				e.printStackTrace();
 			}
 		} else if (path.equals("/pushAction.do")) {
+			//수정
+			System.out.println("수정");
 			push = new PushAction();
 			try {
 				push.pushAction(request, response);
