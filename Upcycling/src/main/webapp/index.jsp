@@ -14,7 +14,7 @@
 		$( "#logout" ).on( "click", function( event ) {
 			logout();
 			});
-		$( "#join" ).on( "click", function( event ) {
+		$( "#jo3in" ).on( "click", function( event ) {
 			join();
 			});
 		
