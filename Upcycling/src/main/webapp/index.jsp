@@ -21,7 +21,7 @@
 		function login(){
 			var data = {
 				    userId: "mihee1",
-				    password: "1234"
+				    password: "12234"
 				};
 			$.ajax({
 				   url:"/loginAction.do",
