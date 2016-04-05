@@ -3,22 +3,20 @@
 
 <mapper namespace="Action.Member">
 	<resultMap type="Action.Member.MemberDTO" id="selectUser">
-		<result property="userId" column="USERID" />
-		<result property="password" column="PASSWORD" />
 		<result property="deviceToken" column="DEVICETOKEN" />
 		<result property="accessToken" column="ACCESSTOKEN" />
-		<result property="expireTime" column="EXPIRETIME" />
 	</resultMap>
 	
-	<select id="SelectUser" resultMap="selectUser" >
+	<!-- select id="SelectUser" resultMap="selectUser" >
 		SELECT USERID, PASSWORD, DEVICETOKEN, ACCESSTOKEN, EXPIRETIME FROM TB_USER
 	</select>
+	  -->	 
+	<select id="SelectUserId" parameterType="java.util.HashMap" resultType="java.lang.String">
+	 	SELECT ACCESSTOKEN FROM TB_LOGIN WHERE ACCESSTOKEN=#{accessToken}
+	</select>
+
+	<insert id="InsertUser" parameterType="java.util.HashMap">
+	 	INSERT INTO TB_LOGIN(ACCESSTOKEN) VALUES(#{accessToken})
+	</insert>
 	 
-	 <select id="SelectUserId" parameterType="java.util.HashMap" resultType="java.lang.String">
-	 	SELECT USERID FROM TB_USER WHERE USERID=#{userId}
-	 </select>
-	 
-	 <insert id="InsertUser" parameterType="java.util.HashMap">
-	 	INSERT INTO TB_USER(USERID, PASSWORD) VALUES(#{userId}, #{password})
-	 </insert>
 </mapper>

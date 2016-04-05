@@ -8,74 +8,60 @@
 		$( "#login" ).on( "click", function( event ) {
 			login();
 			});
-		$( "#push" ).on( "click", function( event ) {
-			push();
+		$( "#getToken" ).on( "click", function( event ) {
+			getToken();
 			});
-		$( "#logout" ).on( "click", function( event ) {
-			logout();
+		$( "#list" ).on( "click", function( event ) {
+			list();
 			});
-		$( "#jo3in" ).on( "click", function( event ) {
+		$( "#register" ).on( "click", function( event ) {
+			register();
+			});
+		$( "#join" ).on( "click", function( event ) {
 			join();
 			});
 		
 		function login(){
-			var data = {
-				    userId: "mihee1",
-				    password: "1234"
-				};
-			$.ajax({
-				   url:"/loginAction.do",
-				   type:"POST",
-				   //data: { json: "John", location: "Boston" },
+			var data = {accessToken: "238f617bdde302ed413de7be018b0bf6b4a43ab8e622bb596df5dc763361e5f7"};
+					$.ajax({
+				   url:"/client/login",
 				   data: data,
-				   success:function(response){
-				         console.log(response)
-				   },
-				   error: function() {
-				        console.log('errors');
-				   }	
+				   type:"POST",
+				   success:function(response){console.log(response)},
+				   error: function() {console.log('errors');}	
 				});
 		}
-		function logout(){
-			var data = {
-				    userId: "mihee",
-				    password: "1234"
-				};
+		function getToken(){
 			$.ajax({
-				   url:"/logoutAction.do",
+				   url:"/client/token",
 				   type:"POST",
-				   //data: { json: "John", location: "Boston" },
-				   data: data,
-				   success:function(response){
-				         console.log(response)
-				   },
-				   error: function() {
-				        console.log('errors');
-				   }	
+				   success:function(response){console.log(response)},
+				   error: function() {console.log('errors');}	
 				});
 		}
-		function push(){
-			var data = {
-				    json: "Push",
-				    bar: "barValue",
-				    baz: "bazValue"
-				};
+		function list(){
+			var data = {accessToken: "238f617bdde302ed413de7be018b0bf6b4a43ab8e622bb596df5dc763361e5f7"};
 			$.ajax({
-				   url:"/pushAction.do",
+				   url:"/water/list",
 				   type:"POST",
-				   //data: { json: "John", location: "Boston" },
 				   data: data,
-				   success:function(response){
-				         console.log(response)
-				   },
-				   error: function() {
-				        console.log('errors');
-				   }	
+				   success:function(response){console.log(response)},
+				   error: function() {console.log('errors');}	
+				});
+		}
+		function register(){
+			var data = {accessToken: "238f617bdde302ed413de7be018b0bf6b4a43ab8e622bb596df5dc763361e5f7"};
+			$.ajax({
+				   url:"/water/register",
+				   type:"POST",
+				   data: data,
+				   success:function(response){console.log(response)},
+				   error: function() {console.log('errors');}	
 				});
 		}
 		function join(){
 			var data = {
-				    userId: "abcqwe",
+				    userId: "mi2h355ee",
 				    password: "1111"
 				};
 			$.ajax({
@@ -96,8 +82,9 @@
 
 	<body>
 		<button id="login">login test</button>
-		<button id="push">push test</button>
-		<button id="logout">logout test</button>
+		<button id="getToken">getToken test</button>
+		<button id="list">list test</button>
+		<button id="register">register test</button>
 		<button id="join">join test</button>
 	</body>
 

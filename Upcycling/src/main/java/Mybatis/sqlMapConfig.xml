@@ -17,6 +17,7 @@
 
      <mappers>
           <mapper resource="Action/Member/Member.xml"/>
+          <mapper resource="Action/Watering/Watering.xml"/>
      </mappers>
   
  </configuration>

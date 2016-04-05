@@ -62,7 +62,6 @@ public class PushAction {
 				//try {
 					//sendAPNS("mess",false,"aaa");
 					//Date startTime = new Date();
-					
 					ZonedDateTime now = ZonedDateTime.now( ZoneOffset.UTC );
 					 System.out.println("time : "+now);
 				//} catch (CommunicationException | KeystoreException e) {

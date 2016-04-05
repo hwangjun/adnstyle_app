@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Action.Watering">
+	<resultMap type="Action.Watering.WateringDTO" id="Watering">
+		<result property="accessToken" column="ACCESSTOKEN" />
+		<result property="waterId" column="WATERID" />
+		<result property="beforeWateringDate" column="BEFOREWATERINGDATE" />
+		<result property="afterWateringDate" column="AFTERWATERINGDATE" />
+		<result property="name" column="NAME" />
+		<result property="img" column="IMG" />
+		<result property="registrationDate" column="REGISTRATIONDATE" />
+	</resultMap>
+	
+	<select id="SelectWateringList" resultMap="Watering" parameterType="java.util.HashMap">
+		SELECT WATERID, BEFOREWATERINGDATE, AFTERWATERINGDATE, NAME, IMG, REGISTRATIONDATE FROM TB_WATERINGLIST WHERE ACCESSTOKEN=#{accessToken}
+	</select>
+	
+	<select id="SelectWateringId" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+		SELECT Max(WATERID)+1 as WATERID FROM TB_WATERINGLIST WHERE ACCESSTOKEN=#{accessToken} group by ACCESSTOKEN
+	</select>	  
+
+</mapper>

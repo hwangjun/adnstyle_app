@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Action.Member.MemberAction;
 import Action.Push.PushAction;
+import Action.Watering.WateringAction;
 
 @WebServlet("/")
 public class mainController extends HttpServlet implements Servlet {
@@ -34,8 +35,9 @@ public class mainController extends HttpServlet implements Servlet {
 		//MemberService member = null;
 		MemberAction member = null;
 		PushAction push = null;
-
-		if (path.equals("/loginAction.do")) {
+		WateringAction watering  = null;
+		System.out.println(path);
+		if (path.equals("/client/login")) {
 			member = new MemberAction();
 			try {
 				member.loginAction(request, response);
@@ -43,30 +45,28 @@ public class mainController extends HttpServlet implements Servlet {
 				e.printStackTrace();
 			}
 			
-		} else if (path.equals("/logoutAction.do")) {
+		}else if (path.equals("/client/token")) {
 			member = new MemberAction();
 			try {
-				member.logoutAction(request, response);
+				member.getTokenAction(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (path.equals("/joinAction.do")) {
-			member = new MemberAction();
+		} else if (path.equals("/water/list")) {
+			watering = new WateringAction();
 			try {
-				member.joinAction(request, response);
+				watering.wateringList(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if (path.equals("/updateDeviceTokenAction.do")) {
-			member = new MemberAction();
+		} else if (path.equals("/water/register")) {
+			watering = new WateringAction();
 			try {
-				member.updateDeviceTokenAction(request, response);
+				watering.getWateringId(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else if (path.equals("/pushAction.do")) {
-			//수정
-			System.out.println("수정");
 			push = new PushAction();
 			try {
 				push.pushAction(request, response);
